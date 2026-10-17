@@ -23,9 +23,8 @@
 ## Git 提交与推送
 
 - 用户已长期授权：本仓库中每个完成并通过适用验证的任务，自动按规范 commit 并 push，无需重复确认；用户当次明确要求不提交或不推送时遵守。此授权不扩大任务本身的修改范围，也不授权部署、重启或对外消息。
-- 提交使用 Conventional Commits，格式为 `<type>(<scope>): <中文说明>`；无合适 scope 时可省略。每个提交只包含本次任务的相关改动，按明确路径暂存，保留无关暂存、未暂存及未跟踪文件。
-- 推送前核对当前分支、远端、上游和全部待推送提交，执行适用检查及 `git diff --cached --check`。正常使用 main/origin；同步只做安全快进，不自动 stash、覆盖改动、强推或改写历史，遇到无法安全解决的分叉或冲突时报告阻塞。
-- 推送后核对远端分支 SHA 与本地提交，交付提交号、验证结果及推送状态。`projects/` 内的项目为独立仓库，提交推送遵循各项目自身规范，不将嵌套仓库或运行产物提交到本仓库。
+- 提交时读取 [.agents/skills/conventional-commits/SKILL.md](.agents/skills/conventional-commits/SKILL.md)；完成任务交付时读取 [.agents/skills/git-workflow/SKILL.md](.agents/skills/git-workflow/SKILL.md)。日常直接在 main 提交并 push，不要求 PR、主题分支或每次先 pull。
+- `projects/` 内的项目为独立仓库，提交推送遵循各项目自身规范，不将嵌套仓库或运行产物提交到本仓库。
 
 ## 记忆
 
