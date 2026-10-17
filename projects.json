@@ -1,4 +1,12 @@
 {
   "schemaVersion": 1,
-  "projects": {}
+  "projects": {
+    "openclaw-plugins": {
+      "name": "OpenClaw 插件仓库",
+      "url": "https://github.com/Lydanne/openclaw-plugins.git",
+      "branch": "main",
+      "repository": "projects/openclaw-plugins",
+      "skills": ["projects/openclaw-plugins/.agents/skills"]
+    }
+  }
 }
