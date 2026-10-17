@@ -1,6 +1,6 @@
 # Agent 工作约定
 
-这是 OpenClaw 主会话的角色仓库。初始化时填写 SOUL.md 和 IDENTITY.md；模板不代表已获得任何生产权限。
+这是 OpenClaw 中 Alice（Agent ID：alice）的角色仓库与工作区。身份和职责见 IDENTITY.md、SOUL.md；项目以 projects.json 登记为准，初始化清单见 docs/bootstrap-checklist.md。初始化不代表已获得任何生产权限。
 
 ## 项目与执行
 

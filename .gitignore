@@ -1,5 +1,6 @@
 projects/
 .runtime/
+.openclaw/
 .tmp/
 node_modules/
 .env
