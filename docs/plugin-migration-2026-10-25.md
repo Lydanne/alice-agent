@@ -50,3 +50,6 @@
 - config validate 通过，readyz HTTP 200；飞书仍 running/connected、probe.ok=true、lastError=null。
 
 此次端到端覆盖 Gateway 工具调用 → 项目/技能路由 → 真实 Codex 技能确认 → 业务命令 → 原 job 查询 → 完成报告。未发送飞书消息，飞书卡片与异步报告交付仍不在本次验收范围。
+
+
+后续已完成真实飞书异步链路及群成员报告访问验收，见 [飞书端到端验收](feishu-e2e-2026-10-25.md)。
