@@ -44,6 +44,8 @@ openclaw plugins install npm-pack:/absolute/agent-repo-package.tgz --force --acc
 openclaw plugins install npm-pack:/absolute/agent-worker-package.tgz --force --accept-capabilities
 ```
 
+旧版 Worker 升级前先备份宿主配置。如果安装器提示旧字段 model、reasoningEffort 不被支持，先用 config patch 将这两个字段设为 null，安装新版后立即应用完整模型配置补丁并验证；不要将旧字段直接带入新插件。安装器可能热加载插件，需在授权维护期间操作。
+
 三个清单 ID 分别是 feishu-conversation、agent-repo、agent-worker。不要安装官方 @openclaw/feishu 来代替本仓库版本，也不要额外加入同一源码 load.paths。插件安装只为下次 Gateway 加载保存产物，尚未完成业务配置。
 
 ## 3. 生成完整配置补丁
