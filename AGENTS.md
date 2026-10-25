@@ -40,3 +40,18 @@
 使用当前会话允许的原生 memory_search/memory_get；不能检索时如实交接 unavailable。不要扫描其他会话补背景。经验写回前核验来源、适用条件、共享范围与失效条件；不自动复制整段报告或私人记忆。详见 docs/memory.md。
 
 本地会话验收时关闭 asyncCompletion，用原 jobId 的 wait/status 取回结果；飞书异步模式需要实际来源绑定和完成适配器，不能只设置开关。
+
+## 工具约定（由 TOOLS.md 迁移）
+
+只有宿主实际提供的工具可以调用，文件说明不等于安装或授权。
+
+- agent_repo：list/inspect 读取登记及本地 Git 状态；skills 生成范围索引，启用 sync 时会先同步。
+- agent_worker：run 接纳后台执行，status/wait 查询原任务，cancel 取消，await_user/reply 补充信息。参数合同见插件文档。
+- memory_search/memory_get：按宿主当前会话可见性检索。
+- feishu_group_history：Main 按需读取当前群并交接必要信息；Worker 不直接获取群历史。
+
+Alice 的项目以 projects.json 和 agent_repo list 的当前登记为准。按用户意图选择项目，调用 agent_repo skills，读取其返回的技能正文及规范，再交接同一 repository 给 Worker。本地验收使用 wait/status 并关闭 asyncCompletion；飞书异步交付按实际来源绑定与完成适配器配置执行。
+
+角色仓库的提交与 Git 工作流技能在 .agents/skills/；项目的开发与交付技能以 agent_repo skills 返回的当前范围为准。不要将项目技能加入所有 Agent 共用的全局目录。
+
+机器路径、模型、状态目录、CLI 登录态和凭证只在管理员私有宿主配置中维护。角色政策文件为 tools/agent-worker-policy.json，修改后重新生成并审查迁移计划，不自动改变已受理任务。
