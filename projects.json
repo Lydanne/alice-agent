@@ -7,6 +7,13 @@
       "branch": "main",
       "repository": "projects/openclaw-plugins",
       "skills": ["projects/openclaw-plugins/.agents/skills"]
+    },
+    "tcei_2026": {
+      "name": "TCEI 2026 赛事平台",
+      "url": "https://github.com/Lydanne/tcei_2026.git",
+      "branch": "master",
+      "repository": "projects/tcei_2026",
+      "skills": ["projects/tcei_2026/.agents/skills"]
     }
   }
 }
