@@ -68,7 +68,7 @@ const patch = {
         pathPrefix: settings.pathPrefix ?? [dirname(settings.cli), dirname(settings.node)].join(':'),
         model: null, reasoningEffort: null, models: null,
         modelProfiles: {default: {enabled: true, name: '默认模型', harness: 'codex', model: settings.model, reasoningEffort: 'low'}},
-        defaultModelId: 'default', thinkingLevel: 0, approvalMode: 'read-only',
+        defaultModelId: 'default', thinkingLevel: 0, approvalMode: base.plugins?.entries?.['agent-worker']?.config?.approvalMode ?? 'read-only',
         skillsEnabled: true, asyncCompletion: Boolean(settings.feishu), resourceKeyExample: 'project:test:target:<id>', ...policies,
       }},
     },

@@ -45,5 +45,9 @@ test('fresh and existing configurations preserve Agent settings and render porta
   assert.deepEqual(canonical.agents.entries.main.tools.deny, ['exec']);
   assert.deepEqual(canonical.agents.entries.other, {workspace: '/other'});
   assert.equal(canonical.agents.list, undefined);
+  base.plugins.entries = {'agent-worker': {config: {approvalMode: 'dangerously-bypass-approvals-and-sandbox'}}};
+  await writeFile(basePath, JSON.stringify(base));
+  const existing = JSON.parse(execFileSync(process.execPath, [join(repo, 'tools/create-openclaw-patch.mjs'), settingsPath, basePath], {encoding: 'utf8'}));
+  assert.equal(existing.plugins.entries['agent-worker'].config.approvalMode, 'dangerously-bypass-approvals-and-sandbox');
 
 });

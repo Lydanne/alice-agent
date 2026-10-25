@@ -83,7 +83,7 @@ openclaw config validate
 
 新版 Worker 使用 `modelProfiles`、`defaultModelId` 和 `thinkingLevel`；生成器将 settings.model 写入默认模型项，并用 null 删除旧版顶层 model、reasoningEffort 和 models。已有自定义模型项仍保留。
 
-生成器配置 Agent workspace 与 agent-repo binding 为同一角色根，保持 sync.enabled=false、开启会话钩子，显式加入工具权限；Worker 使用 agent-repo 项目路由、只读沙箱、指定机器路径与模型，并读取四项模板政策。政策不会被插件自动从文件重读，修改后须重新生成并应用。已有工具 deny/profile、Agent 与通道策略仍须核对，deny 优先于 allow；不得全局开放不需要的工具。非 main Agent 会增加 default 飞书账号 binding，已有相同 binding 时先合并去重。
+生成器配置 Agent workspace 与 agent-repo binding 为同一角色根，保持 sync.enabled=false、开启会话钩子，显式加入工具权限；Worker 使用 agent-repo 项目路由、既有执行模式（新安装默认只读）、指定机器路径与模型，并读取四项模板政策。政策不会被插件自动从文件重读，修改后须重新生成并应用。已有工具 deny/profile、Agent 与通道策略仍须核对，deny 优先于 allow；不得全局开放不需要的工具。非 main Agent 会增加 default 飞书账号 binding，已有相同 binding 时先合并去重。
 
 可选只读检查，从插件仓库执行：
 
