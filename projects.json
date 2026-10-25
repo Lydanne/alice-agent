@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "projects": {
-    "openclaw-plugins": {
+    "agent-plugins": {
       "name": "OpenClaw 插件仓库",
-      "url": "https://github.com/Lydanne/openclaw-plugins.git",
+      "url": "https://github.com/Lydanne/agent-plugins.git",
       "branch": "main",
-      "repository": "projects/openclaw-plugins",
-      "skills": ["projects/openclaw-plugins/.agents/skills"]
+      "repository": "projects/agent-plugins",
+      "skills": ["projects/agent-plugins/.agents/skills"]
     },
     "tcei_2026": {
       "name": "TCEI 2026 赛事平台",

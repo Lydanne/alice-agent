@@ -24,6 +24,10 @@ test('fresh and existing configurations preserve Agent settings and render porta
     const worker = patch.plugins.entries['agent-worker'].config;
     assert.equal(worker.asyncCompletion, Boolean(feishu));
     assert.equal(worker.approvalMode, 'read-only');
+    assert.equal(worker.modelProfiles.default.model, settings.model);
+    assert.equal(worker.defaultModelId, 'default');
+    assert.equal(worker.model, null);
+    assert.equal(worker.reasoningEffort, null);
     assert.ok(worker.executorInstructions.includes('{projectDir}'));
     assert.ok(!JSON.stringify(worker).includes('/Users/x-lyda'));
     assert.equal(patch.plugins.load, undefined);

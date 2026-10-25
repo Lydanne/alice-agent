@@ -1,6 +1,6 @@
 # 首次接入 OpenClaw、更新与恢复
 
-本模板是 Agent workspace，不能通过 plugins install 安装。第一次从上到下执行本页；已有旧环境迁移才使用 --prepare-migration。插件产物准备与隔离安装见 [完整安装指南](https://github.com/Lydanne/openclaw-plugins/blob/main/docs/openclaw-setup.md)。
+本模板是 Agent workspace，不能通过 plugins install 安装。第一次从上到下执行本页；已有旧环境迁移才使用 --prepare-migration。插件产物准备与隔离安装见 [完整安装指南](https://github.com/Lydanne/agent-plugins/blob/main/docs/openclaw-setup.md)。
 
 ## 1. 准备宿主与两个仓库
 
@@ -39,9 +39,9 @@ git clone --no-recurse-submodules https://github.com/OWNER/PROJECT.git projects/
 按完整安装指南构建并 npm pack 三个包。在目标 OpenClaw 状态目录执行（替换包路径；--force 同时会允许覆盖，首次安装前核对来源）：
 
 ```sh
-openclaw plugins install /absolute/feishu-package.tgz --force --accept-capabilities
-openclaw plugins install /absolute/agent-repo-package.tgz --force --accept-capabilities
-openclaw plugins install /absolute/agent-worker-package.tgz --force --accept-capabilities
+openclaw plugins install npm-pack:/absolute/feishu-package.tgz --force --accept-capabilities
+openclaw plugins install npm-pack:/absolute/agent-repo-package.tgz --force --accept-capabilities
+openclaw plugins install npm-pack:/absolute/agent-worker-package.tgz --force --accept-capabilities
 ```
 
 三个清单 ID 分别是 feishu-conversation、agent-repo、agent-worker。不要安装官方 @openclaw/feishu 来代替本仓库版本，也不要额外加入同一源码 load.paths。插件安装只为下次 Gateway 加载保存产物，尚未完成业务配置。
@@ -79,6 +79,8 @@ openclaw config validate
 
 --host-config 通过当前 OpenClaw 的 config get --json 导出 agents/plugins/tools/bindings，支持宿主原始 JSON5，保留旧 agents.list 或新 agents.entries 配置格式；生成器不修改配置。离线操作可用标准 JSON 文件路径代替 --host-config。必须指向目标宿主环境，已有配置不能省略输入，否则数组中的其他 Agent 和白名单可能丢失。
 
+新版 Worker 使用 `modelProfiles`、`defaultModelId` 和 `thinkingLevel`；生成器将 settings.model 写入默认模型项，并用 null 删除旧版顶层 model、reasoningEffort 和 models。已有自定义模型项仍保留。
+
 生成器配置 Agent workspace 与 agent-repo binding 为同一角色根，保持 sync.enabled=false、开启会话钩子，显式加入工具权限；Worker 使用 agent-repo 项目路由、只读沙箱、指定机器路径与模型，并读取四项模板政策。政策不会被插件自动从文件重读，修改后须重新生成并应用。已有工具 deny/profile、Agent 与通道策略仍须核对，deny 优先于 allow；不得全局开放不需要的工具。非 main Agent 会增加 default 飞书账号 binding，已有相同 binding 时先合并去重。
 
 可选只读检查，从插件仓库执行：
@@ -91,7 +93,7 @@ node packages/agent-repo/cli.mjs inspect --repo /srv/agents/my-agent
 
 ## 4. 飞书配置与启动
 
-在飞书开发者后台创建自建应用，启用机器人、长连接订阅 im.message.receive_v1，授予消息接收/发送权限，发布版本并设置应用可用范围。卡片回调、报告文档及附件权限见 [Feishu 插件指南](https://github.com/Lydanne/openclaw-plugins/blob/main/packages/feishu/README.md)。官方 [飞书设置说明](https://docs.openclaw.ai/channels/feishu) 可核对平台流程，插件安装来源仍使用本仓库产物。
+在飞书开发者后台创建自建应用，启用机器人、长连接订阅 im.message.receive_v1，授予消息接收/发送权限，发布版本并设置应用可用范围。卡片回调、报告文档及附件权限见 [Feishu 插件指南](https://github.com/Lydanne/agent-plugins/blob/main/packages/feishu/README.md)。官方 [飞书设置说明](https://docs.openclaw.ai/channels/feishu) 可核对平台流程，插件安装来源仍使用本仓库产物。
 
 ```sh
 openclaw plugins inspect feishu-conversation --runtime --json
@@ -128,4 +130,4 @@ openclaw gateway run
 
 核对真实 Codex 运行、实际 cwd、技能与报告。之后在授权测试群核对 @受理、卡片、补充回复、完成提醒、报告正文和成员访问权限。loaded、健康响应或模拟 CLI 测试不替代真实模型和飞书端到端验证。
 
-角色改动在角色仓库，业务提交在 Project Repo，插件升级在 openclaw-plugins。异机恢复时重新克隆角色和项目，恢复私有登录态、重生成机器路径补丁。保留原 Worker state、requestId、jobId；正在执行的任务先交接，不删除旧状态或重复 run。自动同步应单独验收安全快进、origin/tracking、脏树及分叉保护，再启用。
+角色改动在角色仓库，业务提交在 Project Repo，插件升级在 agent-plugins。异机恢复时重新克隆角色和项目，恢复私有登录态、重生成机器路径补丁。保留原 Worker state、requestId、jobId；正在执行的任务先交接，不删除旧状态或重复 run。自动同步应单独验收安全快进、origin/tracking、脏树及分叉保护，再启用。

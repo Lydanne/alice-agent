@@ -1,6 +1,6 @@
 # Agent Repo Template
 
-用于 OpenClaw 的通用角色仓库模板，配合 [agent-repo 插件](https://github.com/Lydanne/openclaw-plugins/tree/main/packages/agent-repo) 与 [agent-worker 插件](https://github.com/Lydanne/openclaw-plugins/tree/main/packages/agent-worker) 使用。角色、技能、项目登记和可共享经验由此仓库维护；业务代码在独立 Project Repo 中维护。
+用于 OpenClaw 的通用角色仓库模板，配合 [agent-repo 插件](https://github.com/Lydanne/agent-plugins/tree/main/packages/agent-repo) 与 [agent-worker 插件](https://github.com/Lydanne/agent-plugins/tree/main/packages/agent-worker) 使用。角色、技能、项目登记和可共享经验由此仓库维护；业务代码在独立 Project Repo 中维护。
 
 ## 创建自己的 Agent
 
@@ -48,4 +48,4 @@
 }
 ```
 
-见 [项目与技能范围](docs/projects.md)、[记忆管理](docs/memory.md) 和 [插件安装组合指南](https://github.com/Lydanne/openclaw-plugins/blob/main/docs/openclaw-setup.md)。模板默认空登记可被插件解析，但没有可执行项目；它不会替你申请业务权限或应用生产配置。
+见 [项目与技能范围](docs/projects.md)、[记忆管理](docs/memory.md) 和 [插件安装组合指南](https://github.com/Lydanne/agent-plugins/blob/main/docs/openclaw-setup.md)。模板默认空登记可被插件解析，但没有可执行项目；它不会替你申请业务权限或应用生产配置。

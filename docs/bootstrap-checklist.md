@@ -1,6 +1,6 @@
 # 新角色初始化
 
-Alice 使用 Agent ID `alice`，角色仓库为 `Lydanne/alice-agent` 的 main 分支，登记项目为 `projects/openclaw-plugins`。角色身份、职责、使用偏好与工具约定已填写；机器路径和工作区绑定保存在宿主私有配置中。
+Alice 使用 Agent ID `alice`，角色仓库为 `Lydanne/alice-agent` 的 main 分支，登记项目为 `projects/agent-plugins`。角色身份、职责、使用偏好与工具约定已填写；机器路径和工作区绑定保存在宿主私有配置中。
 
 OpenClaw 原生 `agents add` 已完成工作区初始化并移除了根目录 BOOTSTRAP.md。以下保留原始完整清单用于恢复及后续接入，不重复创建角色或重置身份。本次接入只验收本地项目登记与技能发现；真实模型对话、Worker 执行和飞书交付须分别验收，不能从插件 loaded 状态推定完成。
 
