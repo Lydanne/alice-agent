@@ -8,8 +8,7 @@
       "repository": "projects/agent-plugins",
       "skills": [
         "projects/agent-plugins/.agents/skills"
-      ],
-      "knowledge": "projects/agent-plugins/docs/knowledge"
+      ]
     },
     "tcei_2026": {
       "name": "TCEI 2026 赛事平台",
