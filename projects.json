@@ -6,14 +6,19 @@
       "url": "https://github.com/Lydanne/agent-plugins.git",
       "branch": "main",
       "repository": "projects/agent-plugins",
-      "skills": ["projects/agent-plugins/.agents/skills"]
+      "skills": [
+        "projects/agent-plugins/.agents/skills"
+      ],
+      "knowledge": "projects/agent-plugins/docs/knowledge"
     },
     "tcei_2026": {
       "name": "TCEI 2026 赛事平台",
       "url": "https://github.com/Lydanne/tcei_2026.git",
       "branch": "master",
       "repository": "projects/tcei_2026",
-      "skills": ["projects/tcei_2026/.agents/skills"]
+      "skills": [
+        "projects/tcei_2026/.agents/skills"
+      ]
     }
   }
 }
